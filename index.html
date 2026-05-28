@@ -623,7 +623,7 @@
       doneMsg.textContent = 'Opening WhatsApp now…';
       // First line is what Richard sees in the WhatsApp notification — name · level · time · days · pain
       const text = encodeURIComponent(
-        `Hi! I'm ${data.name} · ${data.level} · ${time_label} · ${days_label} · ${data.pain_label}. Just filled the form!`
+        `Hi! I'm ${data.name} · ${data.level} · ${time_label} · ${days_label}. Just filled the form!`
       );
       setTimeout(() => {
         window.location.href = `https://wa.me/${WA_NUMBER}?text=${text}`;
