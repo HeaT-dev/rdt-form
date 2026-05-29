@@ -448,11 +448,12 @@
       </div>
     </div>
 
-    <!-- step 5: name -->
+    <!-- step 5: name + phone -->
     <div class="step" data-step="5">
-      <label class="question-label" for="name">Last question — what's your first name?</label>
-      <p class="question-help">So we know how to greet you on WhatsApp.</p>
-      <input class="text-input" type="text" id="name" name="name" placeholder="e.g. Ahmed" required maxlength="60" autocomplete="given-name">
+      <label class="question-label" for="name">Last step — your name and WhatsApp number</label>
+      <p class="question-help">So we can reach you on WhatsApp.</p>
+      <input class="text-input" type="text" id="name" name="name" placeholder="First name (e.g. Ahmed)" required maxlength="60" autocomplete="given-name" style="margin-bottom:10px">
+      <input class="text-input" type="tel" id="phone" name="phone" placeholder="WhatsApp number (e.g. 0796410365)" required maxlength="20" autocomplete="tel" inputmode="tel">
     </div>
 
     <div class="err" id="err"></div>
@@ -518,8 +519,13 @@
 
   function validateStep(n) {
     if (n === 5) {
-      const v = document.getElementById('name').value.trim();
-      if (!v) { showErr('Please enter your first name.'); return false; }
+      const nameVal = document.getElementById('name').value.trim();
+      if (!nameVal) { showErr('Please enter your first name.'); return false; }
+      const phoneVal = document.getElementById('phone').value.trim();
+      if (!phoneVal) { showErr('Please enter your WhatsApp number.'); return false; }
+      // light sanity check — at least 7 digits somewhere in the input
+      const digitCount = (phoneVal.match(/\d/g) || []).length;
+      if (digitCount < 7) { showErr('Please enter a valid phone number.'); return false; }
       return true;
     }
     const radios = form.querySelectorAll(`.step[data-step="${n}"] input[type="radio"]`);
@@ -560,6 +566,7 @@
     if (hp) { return; } // silently drop bot
 
     const name = document.getElementById('name').value.trim();
+    const phone = document.getElementById('phone').value.trim();
     const struggle = (form.querySelector('input[name="struggle"]:checked') || {}).value || '';
     const level = (form.querySelector('input[name="level"]:checked') || {}).value || '';
     const time = (form.querySelector('input[name="time"]:checked') || {}).value || '';
@@ -593,6 +600,7 @@
 
     const data = {
       name: name,
+      phone: phone,
       struggle: struggle,
       level: level,
       time: time,
@@ -632,7 +640,7 @@
     // Redirect to WhatsApp if configured
     if (WA_NUMBER) {
       doneMsg.textContent = 'Opening WhatsApp now…';
-      // First line is what Richard sees in the WhatsApp notification — name · level · time · days · pain
+      // First line is what Richard sees in the WhatsApp notification — name · level · time · days
       const text = encodeURIComponent(
         `Hi! I'm ${data.name} · ${data.level} · ${time_label} · ${days_label}. Just filled the form!`
       );
