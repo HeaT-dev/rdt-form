@@ -372,7 +372,7 @@
 
   <div class="progress-row">
     <div class="progress-track"><div class="progress-fill" id="progress-fill"></div></div>
-    <div class="progress-label" id="progress-label">1 of 5</div>
+    <div class="progress-label" id="progress-label">1 of 9</div>
   </div>
 
   <form id="lead-form" novalidate>
@@ -380,46 +380,110 @@
     <!-- honeypot -->
     <div class="hp"><label>Don't fill this field <input type="text" name="hp_field" tabindex="-1" autocomplete="off"></label></div>
 
-    <!-- step 1: struggle (pain) -->
+    <!-- step 1: vision -->
     <div class="step active" data-step="1">
-      <label class="question-label">What's hardest about English for you right now?</label>
-      <p class="question-help">Pick what bothers you most.</p>
-      <div class="chip-grid">
-        <label class="chip"><input type="radio" name="struggle" value="freeze" required>
-          <span class="chip-face"><i class="ti ti-snowflake" style="color:#185FA5" aria-hidden="true"></i>I freeze when I try to speak</span></label>
-        <label class="chip"><input type="radio" name="struggle" value="vocab">
-          <span class="chip-face"><i class="ti ti-book" style="color:#854F0B" aria-hidden="true"></i>Vocabulary</span></label>
-        <label class="chip"><input type="radio" name="struggle" value="listen">
-          <span class="chip-face"><i class="ti ti-ear" style="color:#534AB7" aria-hidden="true"></i>Understanding native speakers</span></label>
-        <label class="chip"><input type="radio" name="struggle" value="pron">
-          <span class="chip-face"><i class="ti ti-microphone" style="color:#993C1D" aria-hidden="true"></i>Pronunciation / accent</span></label>
-        <label class="chip"><input type="radio" name="struggle" value="grammar">
-          <span class="chip-face"><i class="ti ti-pencil" style="color:#0F6E56" aria-hidden="true"></i>Grammar</span></label>
-        <label class="chip"><input type="radio" name="struggle" value="speed">
-          <span class="chip-face"><i class="ti ti-bolt" style="color:#BA7517" aria-hidden="true"></i>Speaking fluently</span></label>
-      </div>
-    </div>
-
-    <!-- step 2: level -->
-    <div class="step" data-step="2">
-      <label class="question-label">How would you describe your English right now?</label>
-      <p class="question-help">Pick what feels closest. We'll confirm with a full placement test after you join.</p>
+      <label class="question-label">A year from now your English is exactly where you want it — what are you doing?</label>
+      <p class="question-help">Pick the one that fits best.</p>
       <div class="radio-stack">
-        <label class="radio-row"><input type="radio" name="level" value="A1" required>
-          <span class="radio-row-face"><span class="lvl-tag" style="background:#E6F1FB;color:#0C447C">A1</span><span><strong>Just starting.</strong> Words and basic greetings.</span></span></label>
-        <label class="radio-row"><input type="radio" name="level" value="A2">
-          <span class="radio-row-face"><span class="lvl-tag" style="background:#E1F5EE;color:#085041">A2</span><span><strong>Basic.</strong> Simple sentences for everyday things.</span></span></label>
-        <label class="radio-row"><input type="radio" name="level" value="B1">
-          <span class="radio-row-face"><span class="lvl-tag" style="background:#FAEEDA;color:#633806">B1</span><span><strong>Intermediate.</strong> I can hold a conversation, but slowly.</span></span></label>
-        <label class="radio-row"><input type="radio" name="level" value="B2">
-          <span class="radio-row-face"><span class="lvl-tag" style="background:#FAECE7;color:#712B13">B2</span><span><strong>Upper-intermediate.</strong> I can express ideas, but sometimes I freeze.</span></span></label>
-        <label class="radio-row"><input type="radio" name="level" value="C1">
-          <span class="radio-row-face"><span class="lvl-tag" style="background:#EEEDFE;color:#3C3489">C1</span><span><strong>Advanced.</strong> Comfortable — polishing fluency.</span></span></label>
+        <label class="radio-row"><input type="radio" name="vision" value="work" required>
+          <span class="radio-row-face"><i class="ti ti-briefcase" style="color:#993C1D" aria-hidden="true"></i><strong>Speaking confidently at work / interviews</strong></span></label>
+        <label class="radio-row"><input type="radio" name="vision" value="travel">
+          <span class="radio-row-face"><i class="ti ti-plane" style="color:#185FA5" aria-hidden="true"></i><strong>Traveling and talking to anyone, anywhere</strong></span></label>
+        <label class="radio-row"><input type="radio" name="vision" value="media">
+          <span class="radio-row-face"><i class="ti ti-device-tv" style="color:#534AB7" aria-hidden="true"></i><strong>Watching shows and movies without subtitles</strong></span></label>
+        <label class="radio-row"><input type="radio" name="vision" value="study">
+          <span class="radio-row-face"><i class="ti ti-school" style="color:#0F6E56" aria-hidden="true"></i><strong>Studying or living abroad with ease</strong></span></label>
+        <label class="radio-row"><input type="radio" name="vision" value="confidence">
+          <span class="radio-row-face"><i class="ti ti-mood-smile" style="color:#BA7517" aria-hidden="true"></i><strong>Just feeling confident — no more embarrassment</strong></span></label>
       </div>
     </div>
 
-    <!-- step 3: time (available after) -->
+    <!-- step 2: holding back (multi-select) -->
+    <div class="step" data-step="2">
+      <label class="question-label">What's holding your English back most right now?</label>
+      <p class="question-help">Pick all that apply.</p>
+      <div class="radio-stack">
+        <label class="radio-row"><input type="checkbox" name="holding_back" value="fluency">
+          <span class="radio-row-face"><i class="ti ti-bolt" style="color:#BA7517" aria-hidden="true"></i><strong>I can't speak fluently</strong></span></label>
+        <label class="radio-row"><input type="checkbox" name="holding_back" value="listening">
+          <span class="radio-row-face"><i class="ti ti-ear" style="color:#534AB7" aria-hidden="true"></i><strong>I can't follow fast / native speech</strong></span></label>
+        <label class="radio-row"><input type="checkbox" name="holding_back" value="no_practice">
+          <span class="radio-row-face"><i class="ti ti-users-off" style="color:#5F5E5A" aria-hidden="true"></i><strong>I have no one to practice with</strong></span></label>
+        <label class="radio-row"><input type="checkbox" name="holding_back" value="confidence">
+          <span class="radio-row-face"><i class="ti ti-snowflake" style="color:#185FA5" aria-hidden="true"></i><strong>I lose confidence when I speak</strong></span></label>
+        <label class="radio-row"><input type="checkbox" name="holding_back" value="vocab">
+          <span class="radio-row-face"><i class="ti ti-book" style="color:#854F0B" aria-hidden="true"></i><strong>I forget vocabulary</strong></span></label>
+      </div>
+    </div>
+
+    <!-- step 3: tried before -->
     <div class="step" data-step="3">
+      <label class="question-label">Have you tried learning English before?</label>
+      <p class="question-help">Pick what describes you best.</p>
+      <div class="radio-stack">
+        <label class="radio-row"><input type="radio" name="tried" value="apps" required>
+          <span class="radio-row-face"><i class="ti ti-device-mobile" style="color:#185FA5" aria-hidden="true"></i><strong>Apps (Duolingo, etc.)</strong></span></label>
+        <label class="radio-row"><input type="radio" name="tried" value="youtube">
+          <span class="radio-row-face"><i class="ti ti-brand-youtube" style="color:#A32D2D" aria-hidden="true"></i><strong>YouTube / free videos</strong></span></label>
+        <label class="radio-row"><input type="radio" name="tried" value="course">
+          <span class="radio-row-face"><i class="ti ti-school" style="color:#0F6E56" aria-hidden="true"></i><strong>A course or academy</strong></span></label>
+        <label class="radio-row"><input type="radio" name="tried" value="tutor">
+          <span class="radio-row-face"><i class="ti ti-user-star" style="color:#534AB7" aria-hidden="true"></i><strong>A private tutor</strong></span></label>
+        <label class="radio-row"><input type="radio" name="tried" value="never">
+          <span class="radio-row-face"><i class="ti ti-circle-dashed" style="color:#5F5E5A" aria-hidden="true"></i><strong>Never really tried</strong></span></label>
+      </div>
+    </div>
+
+    <!-- step 4: what didn't work -->
+    <div class="step" data-step="4">
+      <label class="question-label">What didn't work about it?</label>
+      <p class="question-help">Pick the main reason.</p>
+      <div class="radio-stack">
+        <label class="radio-row"><input type="radio" name="didnt_work" value="motivation" required>
+          <span class="radio-row-face"><i class="ti ti-mood-empty" style="color:#5F5E5A" aria-hidden="true"></i><strong>I lost motivation and gave up</strong></span></label>
+        <label class="radio-row"><input type="radio" name="didnt_work" value="theory">
+          <span class="radio-row-face"><i class="ti ti-book-2" style="color:#854F0B" aria-hidden="true"></i><strong>Lots of theory, no real speaking</strong></span></label>
+        <label class="radio-row"><input type="radio" name="didnt_work" value="cost">
+          <span class="radio-row-face"><i class="ti ti-coin" style="color:#BA7517" aria-hidden="true"></i><strong>Too expensive for what I got</strong></span></label>
+        <label class="radio-row"><input type="radio" name="didnt_work" value="no_feedback">
+          <span class="radio-row-face"><i class="ti ti-message-2-off" style="color:#993C1D" aria-hidden="true"></i><strong>No one corrected or pushed me</strong></span></label>
+        <label class="radio-row"><input type="radio" name="didnt_work" value="schedule">
+          <span class="radio-row-face"><i class="ti ti-calendar-x" style="color:#534AB7" aria-hidden="true"></i><strong>It didn't fit my schedule</strong></span></label>
+      </div>
+    </div>
+
+    <!-- step 5: feels when speaking -->
+    <div class="step" data-step="5">
+      <label class="question-label">How do you feel when you have to speak English?</label>
+      <p class="question-help">Pick what's closest.</p>
+      <div class="chip-grid">
+        <label class="chip"><input type="radio" name="feels" value="confident" required>
+          <span class="chip-face"><i class="ti ti-mood-smile" style="color:#0F6E56" aria-hidden="true"></i>Confident</span></label>
+        <label class="chip"><input type="radio" name="feels" value="nervous">
+          <span class="chip-face"><i class="ti ti-mood-neutral" style="color:#BA7517" aria-hidden="true"></i>Nervous but okay</span></label>
+        <label class="chip"><input type="radio" name="feels" value="anxious">
+          <span class="chip-face"><i class="ti ti-mood-sad" style="color:#993C1D" aria-hidden="true"></i>Anxious</span></label>
+        <label class="chip"><input type="radio" name="feels" value="avoid">
+          <span class="chip-face"><i class="ti ti-eye-off" style="color:#5F5E5A" aria-hidden="true"></i>I avoid it</span></label>
+      </div>
+    </div>
+
+    <!-- step 6: when start -->
+    <div class="step" data-step="6">
+      <label class="question-label">When do you want to start?</label>
+      <p class="question-help">Be honest — helps us match you to the right cohort.</p>
+      <div class="chip-grid">
+        <label class="chip"><input type="radio" name="start_when" value="this_week" required>
+          <span class="chip-face"><i class="ti ti-bolt" style="color:#BA7517" aria-hidden="true"></i>This week</span></label>
+        <label class="chip"><input type="radio" name="start_when" value="this_month">
+          <span class="chip-face"><i class="ti ti-calendar" style="color:#0F6E56" aria-hidden="true"></i>This month</span></label>
+        <label class="chip"><input type="radio" name="start_when" value="exploring">
+          <span class="chip-face"><i class="ti ti-search" style="color:#5F5E5A" aria-hidden="true"></i>Just exploring</span></label>
+      </div>
+    </div>
+
+    <!-- step 7: time (available after) -->
+    <div class="step" data-step="7">
       <label class="question-label">When are you free in the evenings?</label>
       <p class="question-help">Pick the earliest time you can start a class on a typical evening (Jordan time).</p>
       <div class="chip-grid">
@@ -434,8 +498,8 @@
       </div>
     </div>
 
-    <!-- step 4: days available -->
-    <div class="step" data-step="4">
+    <!-- step 8: days available -->
+    <div class="step" data-step="8">
       <label class="question-label">Which days work for you?</label>
       <p class="question-help">Cohorts run on a fixed weekly schedule.</p>
       <div class="radio-stack">
@@ -448,12 +512,12 @@
       </div>
     </div>
 
-    <!-- step 5: name + phone -->
-    <div class="step" data-step="5">
-      <label class="question-label" for="name">Last step — your name and WhatsApp number</label>
-      <p class="question-help">So we can reach you on WhatsApp.</p>
+    <!-- step 9: name + email -->
+    <div class="step" data-step="9">
+      <label class="question-label" for="name">Last step — your name and email</label>
+      <p class="question-help">So we can send you the placement test and lesson schedule.</p>
       <input class="text-input" type="text" id="name" name="name" placeholder="First name (e.g. Ahmed)" required maxlength="60" autocomplete="given-name" style="margin-bottom:10px">
-      <input class="text-input" type="tel" id="phone" name="phone" placeholder="WhatsApp number (e.g. 0796410365)" required maxlength="20" autocomplete="tel" inputmode="tel">
+      <input class="text-input" type="email" id="email" name="email" placeholder="Email (e.g. ahmed@example.com)" required maxlength="120" autocomplete="email" inputmode="email">
     </div>
 
     <div class="err" id="err"></div>
@@ -479,7 +543,7 @@
 
 <script>
 (function() {
-  const TOTAL_STEPS = 5;
+  const TOTAL_STEPS = 9;
   let current = 1;
 
   const form = document.getElementById('lead-form');
@@ -518,19 +582,34 @@
   }
 
   function validateStep(n) {
-    if (n === 5) {
-      const nameVal = document.getElementById('name').value.trim();
-      if (!nameVal) { showErr('Please enter your first name.'); return false; }
-      const phoneVal = document.getElementById('phone').value.trim();
-      if (!phoneVal) { showErr('Please enter your WhatsApp number.'); return false; }
-      // light sanity check — at least 7 digits somewhere in the input
-      const digitCount = (phoneVal.match(/\d/g) || []).length;
-      if (digitCount < 7) { showErr('Please enter a valid phone number.'); return false; }
+    // Step 2 is multi-select — at least one checkbox required
+    if (n === 2) {
+      const checks = form.querySelectorAll('.step[data-step="2"] input[type="checkbox"]:checked');
+      if (checks.length === 0) { showErr('Pick at least one.'); return false; }
       return true;
     }
+    // Step 9 is name + email
+    if (n === 9) {
+      const nameVal = document.getElementById('name').value.trim();
+      if (!nameVal) { showErr('Please enter your first name.'); return false; }
+      const emailVal = document.getElementById('email').value.trim();
+      if (!emailVal) { showErr('Please enter your email.'); return false; }
+      if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(emailVal)) { showErr('Please enter a valid email.'); return false; }
+      return true;
+    }
+    // All other steps: single radio
     const radios = form.querySelectorAll(`.step[data-step="${n}"] input[type="radio"]`);
     for (const r of radios) if (r.checked) return true;
     showErr('Please pick an option to continue.');
+    return false;
+  }
+
+  // Conditional skip: if user picks "Never really tried" on step 3, skip step 4
+  function shouldSkip(n) {
+    if (n === 4) {
+      const tried = (form.querySelector('input[name="tried"]:checked') || {}).value || '';
+      return tried === 'never';
+    }
     return false;
   }
 
@@ -542,14 +621,21 @@
   btnNext.addEventListener('click', () => {
     if (!validateStep(current)) return;
     if (current < TOTAL_STEPS) {
-      current++;
+      let next = current + 1;
+      while (shouldSkip(next) && next < TOTAL_STEPS) next++;
+      current = next;
       showStep(current);
     } else {
       submitForm();
     }
   });
   btnBack.addEventListener('click', () => {
-    if (current > 1) { current--; showStep(current); }
+    if (current > 1) {
+      let prev = current - 1;
+      while (shouldSkip(prev) && prev > 1) prev--;
+      current = prev;
+      showStep(current);
+    }
   });
 
   // Allow Enter key to advance
@@ -566,21 +652,16 @@
     if (hp) { return; } // silently drop bot
 
     const name = document.getElementById('name').value.trim();
-    const phone = document.getElementById('phone').value.trim();
-    const struggle = (form.querySelector('input[name="struggle"]:checked') || {}).value || '';
-    const level = (form.querySelector('input[name="level"]:checked') || {}).value || '';
+    const email = document.getElementById('email').value.trim();
+    const vision = (form.querySelector('input[name="vision"]:checked') || {}).value || '';
+    const holding_back = Array.from(form.querySelectorAll('input[name="holding_back"]:checked')).map(c => c.value).join(',');
+    const tried = (form.querySelector('input[name="tried"]:checked') || {}).value || '';
+    const didnt_work = (form.querySelector('input[name="didnt_work"]:checked') || {}).value || '';
+    const feels = (form.querySelector('input[name="feels"]:checked') || {}).value || '';
+    const start_when = (form.querySelector('input[name="start_when"]:checked') || {}).value || '';
     const time = (form.querySelector('input[name="time"]:checked') || {}).value || '';
     const days = (form.querySelector('input[name="days"]:checked') || {}).value || '';
 
-    // Derived tags — written as extra sheet columns
-    const painMap = {
-      freeze: 'freezes up',
-      vocab: 'vocab',
-      listen: 'listening',
-      pron: 'pronunciation',
-      grammar: 'grammar',
-      speed: 'fluency'
-    };
     // Display-friendly labels for the WhatsApp prefill
     const timeMap = {
       '6pm': 'after 6pm',
@@ -593,20 +674,36 @@
       stt: 'Sun/Tue/Thu',
       all: 'any day'
     };
-    const pain_label = painMap[struggle] || '';
+    const startMap = {
+      this_week: 'this week',
+      this_month: 'this month',
+      exploring: 'exploring'
+    };
+    // Priority for triage — derived from how soon they want to start
+    const priorityMap = {
+      this_week: 'hot',
+      this_month: 'warm',
+      exploring: 'cold'
+    };
     const time_label = timeMap[time] || time;
     const days_label = daysMap[days] || days;
-    const cohort = (level && time && days) ? (level + '·' + time + '·' + days) : '';
+    const start_label = startMap[start_when] || start_when;
+    const priority = priorityMap[start_when] || '';
+    const cohort = (time && days) ? (time + '·' + days) : '';
 
     const data = {
       name: name,
-      phone: phone,
-      struggle: struggle,
-      level: level,
+      email: email,
+      vision: vision,
+      holding_back: holding_back,
+      tried: tried,
+      didnt_work: didnt_work,
+      feels: feels,
+      start_when: start_when,
       time: time,
       days: days,
       cohort: cohort,
-      pain_label: pain_label,
+      priority: priority,
       utm_source: utm.source,
       utm_medium: utm.medium,
       utm_campaign: utm.campaign,
@@ -640,9 +737,9 @@
     // Redirect to WhatsApp if configured
     if (WA_NUMBER) {
       doneMsg.textContent = 'Opening WhatsApp now…';
-      // First line is what Richard sees in the WhatsApp notification — name · level · time · days
+      // First line is what Richard sees in the WhatsApp notification — name · time · days · when-to-start
       const text = encodeURIComponent(
-        `Hi! I'm ${data.name} · ${data.level} · ${time_label} · ${days_label}. Just filled the form!`
+        `Hi! I'm ${data.name} · ${time_label} · ${days_label} · ${start_label}. Just filled the form!`
       );
       setTimeout(() => {
         window.location.href = `https://wa.me/${WA_NUMBER}?text=${text}`;
