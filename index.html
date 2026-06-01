@@ -397,7 +397,6 @@
     <!-- step 1: vision -->
     <div class="step active" data-step="1">
       <label class="question-label">وين بدك تكون بعد 3 أشهر من الآن؟</label>
-      <p class="question-help">اختار الإشي اللي بنطبق عليك أكثر.</p>
       <div class="radio-stack">
         <label class="radio-row"><input type="radio" name="vision" value="interview" required>
           <span class="radio-row-face"><i class="ti ti-briefcase" style="color:#993C1D" aria-hidden="true"></i><strong>قادر على إجراء مقابلات عمل بالإنجليزي</strong></span></label>
@@ -410,26 +409,28 @@
       </div>
     </div>
 
-    <!-- step 2: holding back (multi-select) -->
+    <!-- step 2: holding back (multi-select, max 2) -->
     <div class="step" data-step="2">
-      <label class="question-label">ما هي نقطة ضعفك حالياً؟</label>
-      <p class="question-help">اختار كل اللي بنطبق عليك.</p>
+      <label class="question-label">ما هي نقطة ضعفك حالياً؟ <span style="font-weight:400;color:var(--text-muted);font-size:14px">(لحد خيارين)</span></label>
       <div class="radio-stack">
-        <label class="radio-row"><input type="checkbox" name="holding_back" value="fluency">
-          <span class="radio-row-face"><i class="ti ti-bolt" style="color:#BA7517" aria-hidden="true"></i><strong>تحدُّث الإنجليزية بطلاقة</strong></span></label>
-        <label class="radio-row"><input type="checkbox" name="holding_back" value="time">
-          <span class="radio-row-face"><i class="ti ti-clock" style="color:#5F5E5A" aria-hidden="true"></i><strong>ضيق الوقت</strong></span></label>
-        <label class="radio-row"><input type="checkbox" name="holding_back" value="listening">
-          <span class="radio-row-face"><i class="ti ti-ear" style="color:#534AB7" aria-hidden="true"></i><strong>القدرة على فهم النتيف سبيكرز</strong></span></label>
         <label class="radio-row"><input type="checkbox" name="holding_back" value="vocab">
           <span class="radio-row-face"><i class="ti ti-book" style="color:#854F0B" aria-hidden="true"></i><strong>نسيان الكلمات خلال الحوار</strong></span></label>
+        <label class="radio-row"><input type="checkbox" name="holding_back" value="listening">
+          <span class="radio-row-face"><i class="ti ti-ear" style="color:#534AB7" aria-hidden="true"></i><strong>عدم القدرة على فهم النتيف سبيكرز</strong></span></label>
+        <label class="radio-row"><input type="checkbox" name="holding_back" value="time">
+          <span class="radio-row-face"><i class="ti ti-clock" style="color:#5F5E5A" aria-hidden="true"></i><strong>ضيق الوقت</strong></span></label>
+        <label class="radio-row"><input type="checkbox" name="holding_back" value="sentence_time">
+          <span class="radio-row-face"><i class="ti ti-hourglass" style="color:#BA7517" aria-hidden="true"></i><strong>أحتاج وقت لتكوين جملة</strong></span></label>
+        <label class="radio-row"><input type="checkbox" name="holding_back" value="shy">
+          <span class="radio-row-face"><i class="ti ti-mood-confuzed" style="color:#993C1D" aria-hidden="true"></i><strong>أشعر بالخجل عند التحدث أمام الآخرين</strong></span></label>
+        <label class="radio-row"><input type="checkbox" name="holding_back" value="reading_vs_speaking">
+          <span class="radio-row-face"><i class="ti ti-book-2" style="color:#0F6E56" aria-hidden="true"></i><strong>جيد بالقراءة ولكن سيء بالمحادثة</strong></span></label>
       </div>
     </div>
 
     <!-- step 3: tried before -->
     <div class="step" data-step="3">
       <label class="question-label">جرّبت تتعلّم إنجليزي من قبل؟</label>
-      <p class="question-help">اختار الإشي اللي بنطبق عليك أكثر.</p>
       <div class="radio-stack">
         <label class="radio-row"><input type="radio" name="tried" value="apps" required>
           <span class="radio-row-face"><i class="ti ti-device-mobile" style="color:#185FA5" aria-hidden="true"></i><strong>تطبيقات (Duolingo وغيرها)</strong></span></label>
@@ -511,7 +512,7 @@
 
     <!-- step 8: time (available after) -->
     <div class="step" data-step="8">
-      <label class="question-label">متاح حسب التوقيت الأردني — مساءً</label>
+      <label class="question-label">حسب التوقيت الأردني — مساءً — متى بتكون متاح؟</label>
       <p class="question-help">اختار أبكر ساعة بتقدر تبلش فيها الدرس.</p>
       <div class="chip-grid">
         <label class="chip"><input type="radio" name="time" value="6pm" required>
@@ -608,10 +609,11 @@
   }
 
   function validateStep(n) {
-    // Step 2 is multi-select — at least one checkbox required
+    // Step 2 is multi-select — between 1 and 2 checkboxes required
     if (n === 2) {
       const checks = form.querySelectorAll('.step[data-step="2"] input[type="checkbox"]:checked');
-      if (checks.length === 0) { showErr('اختار واحد على الأقل.'); return false; }
+      if (checks.length === 0) { showErr('اختار خيار واحد على الأقل.'); return false; }
+      if (checks.length > 2) { showErr('اختار خيارين بحد أقصى.'); return false; }
       return true;
     }
     // Step 10 is name + email (email optional)
@@ -664,6 +666,19 @@
       current = prev;
       showStep(current);
     }
+  });
+
+  // Step 2: limit holding_back checkboxes to max 2 selections.
+  // If user tries to check a 3rd, immediately uncheck it and show a hint.
+  form.querySelectorAll('input[name="holding_back"]').forEach(cb => {
+    cb.addEventListener('change', () => {
+      if (!cb.checked) return;
+      const checkedNow = form.querySelectorAll('input[name="holding_back"]:checked');
+      if (checkedNow.length > 2) {
+        cb.checked = false;
+        showErr('اختار خيارين بحد أقصى.');
+      }
+    });
   });
 
   // Allow Enter key to advance
